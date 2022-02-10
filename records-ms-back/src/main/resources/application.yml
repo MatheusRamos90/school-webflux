@@ -1,0 +1,41 @@
+server:
+  port: 8080
+spring:
+  profiles:
+    active: dev
+  jackson:
+    default-property-inclusion: non_null
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: schoolwebflux
+---
+spring:
+  config:
+    activate:
+      on-profile: nonprod
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: schoolwebflux
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: schoolwebflux
+---
+logging:
+  level:
+    root: info

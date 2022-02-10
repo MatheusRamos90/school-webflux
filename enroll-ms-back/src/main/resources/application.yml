@@ -1,0 +1,39 @@
+server:
+  port: 8081
+spring:
+  profiles:
+    active: dev
+  jackson:
+    default-property-inclusion: non_null
+restClient:
+  studentUrl: http://localhost:8080/v1/student
+  courseUrl: http://localhost:8080/v1/course
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+---
+spring:
+  config:
+    activate:
+      on-profile: nonprod
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: schoolwebflux
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: schoolwebflux
+---
+logging:
+  level:
+    root: info
